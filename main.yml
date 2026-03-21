@@ -1,0 +1,23 @@
+---
+- name: Configure host.
+  hosts: all
+
+  vars_files:
+    - default.config.yml
+    - config.yml
+
+  tasks:
+    - import_tasks: tasks/update.yml
+    - import_tasks: tasks/base-packages.yml
+    - import_tasks: tasks/swap.yml
+    - import_tasks: tasks/chaotic-aur.yml
+    - import_tasks: tasks/xorg.yml
+    - import_tasks: tasks/i3.yml
+    - import_tasks: tasks/other-packages.yml
+    - import_tasks: tasks/tmuxinator.yml
+    - import_tasks: tasks/neovim.yml
+    #- import_tasks: tasks/fonts.yml
+    #- import_tasks: tasks/gnome.yml
+    #- import_tasks: tasks/other-services.yml
+    #- import_tasks: tasks/dev-packages.yml
+    #- import_tasks: tasks/upgrade.yml

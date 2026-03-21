@@ -1,0 +1,69 @@
+---
+update: true
+swapfile_path: /swapfile
+swapfile_size: 8G
+
+base_packages:
+  - base
+  - base-devel
+  - linux
+  - linux-firmware
+  - sudo
+  - dhcpcd
+  - netctl
+  - networkmanager
+  - openssh
+  - pipewire
+  - man-db
+  - man-pages
+  - git
+  - wget
+  - reflector
+  - curl
+
+xorg_packages:
+  - xorg
+  - xorg-apps
+  - xorg-drivers
+  - xorg-fonts
+  - xorg-xinit
+
+i3_packages:
+  - i3-wm
+  - i3status
+  - rofi # Program launcher.
+
+tmuxinator:
+  - tmuxinator
+
+neovim:
+  - neovim
+
+
+other_packages:
+  - stow
+  - firefox
+  - alacritty
+  - tmux
+  - xclip
+  - ripgrep
+  - htop
+
+services_list:
+  - sshd
+  - NetworkManager
+  - reflector
+
+dev_packages:
+  - python
+  - python-pip
+  - nodejs
+  - npm
+  - rust
+  - jre
+  - jdk
+  - go
+
+graphics_packages:
+  - nvidia-470xx-dkms
+  - bbswitch-dkms

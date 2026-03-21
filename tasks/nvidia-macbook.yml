@@ -1,0 +1,44 @@
+---
+- name: Install graphics-related packages
+  become: true
+  become_user: "{{ ansible_user_id }}"
+  kewlfft.aur.aur:
+    name: "{{ graphics_packages }}"
+    use: yay
+    state: present
+  changed_when: false
+
+- name: Blacklist NVIDIA modules
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/blacklist-nvidia.conf
+    content: |
+      blacklist nvidia
+      blacklist nouveau
+
+- name: Set GRUB kernel parameters
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash modprobe.blacklist=nvidia,nouveau"'
+
+- name: Regenerate GRUB config
+  ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
+
+- name: Create bbswitch service
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/bbswitch-off.service
+    content: |
+      [Unit]
+      Description=Turn off NVIDIA GPU
+
+      [Service]
+      Type=oneshot
+      ExecStart=/bin/sh -c "echo OFF > /proc/acpi/bbswitch"
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Enable bbswitch service
+  ansible.builtin.systemd:
+    name: bbswitch-off
+    enabled: true

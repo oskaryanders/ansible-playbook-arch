@@ -1,0 +1,7 @@
+---
+- name: Install i3 packages
+  become: true
+  pacman:
+    name: "{{ i3_packages }}"
+    state: present
+  changed_when: false

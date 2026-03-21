@@ -1,0 +1,7 @@
+---
+- name: Install tmuxinator
+  become: false
+  community.general.pacman:
+    name: "{{ tmuxinator }}"
+    state: present
+  changed_when: false

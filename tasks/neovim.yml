@@ -1,0 +1,7 @@
+---
+- name: Install neovim
+  become: true
+  community.general.pacman:
+    name: "{{ neovim }}"
+    state: present
+  changed_when: false

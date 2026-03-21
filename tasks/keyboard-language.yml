@@ -1,0 +1,7 @@
+- name: Set keyboard layout to Swedish
+  become: true
+  tasks:
+    - name: Configure keyboard layout
+      ansible.builtin.lineinfile:
+        path: /etc/default/keyboard
+        regexp: 
