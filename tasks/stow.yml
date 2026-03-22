@@ -1,0 +1,45 @@
+---
+# tasks/stow.yml
+
+- name: Ensure Stow is installed
+  pacman:
+    name: stow
+    state: present
+
+- name: Clone dotfiles repository if it doesn't exist
+  git:
+    repo: 'git@github.com:oskaryanders/.dotfiles.git'
+    dest: '~/dotfiles'
+    version: main  # Change to your desired branch
+    force: yes
+
+- name: Use Stow to symlink nvim dotfiles
+  command: stow nvim
+  args:
+    chdir: '~/dotfiles'
+
+- name: Use Stow to symlink alacritty dotfiles
+  command: stow alacritty
+  args:
+    chdir: '~/dotfiles'
+
+- name: Use Stow to symlink i3 dotfiles
+  command: stow i3
+  args:
+    chdir: '~/dotfiles'
+
+- name: Use Stow to symlink tmuxinator dotfiles
+  command: stow tmuxinator
+  args:
+    chdir: '~/dotfiles'
+
+- name: Use Stow to symlink xorg dotfiles
+  become: true
+  command: stow --target=/etc xorg
+  args:
+    chdir: '/home/oskarand/dotfiles'
+
+- name: Use Stow to symlink zsh dotfiles
+  command: stow zsh
+  args:
+    chdir: '~/dotfiles'
