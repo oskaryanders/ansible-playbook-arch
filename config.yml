@@ -32,6 +32,7 @@ i3_packages:
   - i3-wm
   - i3status
   - rofi # Program launcher.
+  - sddm
 
 tmuxinator:
   - tmuxinator
@@ -48,6 +49,9 @@ other_packages:
   - xclip
   - ripgrep
   - htop
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+  - fzf
 
 services_list:
   - sshd
@@ -60,7 +64,6 @@ dev_packages:
   - nodejs
   - npm
   - rust
-  - jre
   - jdk
   - go
 
