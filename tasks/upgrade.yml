@@ -1,9 +1,7 @@
 ---
-- name: Update all packages
+- name: Update system packages (pacman)
   become: true
-  kewlfft.aur.aur:
+  community.general.pacman:
+    update_cache: true
     upgrade: true
-    use: yay
-    state: present
-  changed_when: false
   when: update | default(false) | bool
