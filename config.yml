@@ -38,7 +38,8 @@ tmuxinator:
   - tmuxinator
 
 neovim:
-  - neovim
+  - neovim-nightly-bin
+  - stylua
 
 
 other_packages:

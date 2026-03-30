@@ -1,7 +1,8 @@
 ---
 - name: Install neovim
   become: true
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: "{{ neovim }}"
+    use: yay
     state: present
   changed_when: false
