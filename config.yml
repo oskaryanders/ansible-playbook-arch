@@ -3,6 +3,7 @@ update: true
 swapfile_path: /swapfile
 swapfile_size: 8G
 
+
 base_packages:
   - base
   - base-devel
@@ -40,6 +41,7 @@ tmuxinator:
 neovim:
   - neovim-nightly-bin
   - stylua
+  - lua-language-server
 
 
 other_packages:
@@ -63,10 +65,27 @@ dev_packages:
   - python
   - python-pip
   - nodejs
-  - npm
   - rust
   - jdk
   - go
+  - ty
+  - ruff
+  - uv
+  - black
+  - mdformat
+  - taplo
+  - vscode-json-languageserver
+  - marksman
+  - yaml-language-server
+  - tree-sitter-cli
+  - jq
+  - ast-grep
+  - fd
+  - pyright
+
+dev_uv_installed_packages:
+  - isort
+  - black
 
 graphics_packages:
   - nvidia-470xx-dkms
